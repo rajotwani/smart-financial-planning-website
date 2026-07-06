@@ -109,8 +109,12 @@ nav a.active { color: var(--gold-light); border-bottom-color: var(--gold-light);
 }
 .hero-card h3 { font-size: 15px; color: var(--gold-light); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
 .hero-card ul { list-style: none; }
-.hero-card li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; color: #dfe6ee; }
+.hero-card li { padding: 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; color: #dfe6ee; }
 .hero-card li:last-child { border-bottom: none; }
+.hero-card li a { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; color: #dfe6ee; transition: color 0.2s; }
+.hero-card li a:hover { color: var(--gold-light); }
+.hero-card li a::after { content: "\2192"; opacity: 0.6; margin-left: 10px; }
+.hero-card li a:hover::after { opacity: 1; }
 
 /* Section shared */
 section { padding: 70px 0; }
