@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Financial Planning Inc. | Life &amp; Property Insurance</title>
+<style>
+  :root {
+    --navy: #10243e;
+    --navy-light: #1b3a5c;
+    --gold: #c99a3f;
+    --gold-light: #e8c77a;
+    --cream: #faf7f0;
+    --text-dark: #1c2530;
+    --text-muted: #5c6b7a;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--white);
+  }
+  a { text-decoration: none; color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    background: var(--navy);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .logo span { color: var(--gold-light); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    font-size: 15px;
+    color: #dfe6ee;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    padding: 90px 0 100px;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: 42px;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero p {
+    font-size: 17px;
+    color: #cfd9e4;
+    margin-bottom: 30px;
+    max-width: 480px;
+  }
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-secondary {
+    border: 1.5px solid #7f92a6;
+    color: var(--white);
+  }
+  .btn-secondary:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  .hero-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 30px;
+  }
+  .hero-card h3 { font-size: 15px; color: var(--gold-light); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .hero-card ul { list-style: none; }
+  .hero-card li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 15px;
+    color: #dfe6ee;
+  }
+  .hero-card li:last-child { border-bottom: none; }
+
+  /* Section shared */
+  section { padding: 70px 0; }
+  .section-title {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 30px;
+    color: var(--navy);
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 46px;
+    font-size: 16px;
+  }
+
+  /* Services */
+  .services { background: var(--cream); }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px 22px;
+    box-shadow: 0 2px 10px rgba(16,36,62,0.06);
+    border-top: 3px solid var(--gold);
+  }
+  .service-card .icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--navy);
+    color: var(--gold-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .service-card h4 { font-size: 18px; margin-bottom: 8px; color: var(--navy); }
+  .service-card p { font-size: 14.5px; color: var(--text-muted); }
+
+  /* About */
+  .about .wrap {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 14px;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 6px 20px rgba(16,36,62,0.18);
+  }
+  .about h2 { font-size: 28px; color: var(--navy); margin-bottom: 16px; }
+  .about p { color: var(--text-muted); margin-bottom: 14px; font-size: 15.5px; }
+  .about-badges { display: flex; gap: 14px; margin-top: 22px; flex-wrap: wrap; }
+  .badge {
+    background: var(--cream);
+    border: 1px solid #eadfc7;
+    color: var(--navy);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  /* Why us */
+  .why { background: var(--navy); color: var(--white); }
+  .why .section-title, .why .section-sub { color: var(--white); }
+  .why .section-sub { color: #b9c5d3; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .why-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .why-item h4 { color: var(--gold-light); margin-bottom: 8px; font-size: 17px; }
+  .why-item p { color: #cfd9e4; font-size: 14.5px; }
+
+  /* Contact */
+  .contact { background: var(--cream); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .contact-info { background: var(--white); border-radius: 14px; padding: 34px; box-shadow: 0 2px 10px rgba(16,36,62,0.06); }
+  .contact-info h3 { color: var(--navy); font-size: 20px; margin-bottom: 20px; }
+  .contact-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
+  .contact-row .ic {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--navy); color: var(--gold-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 16px;
+  }
+  .contact-row a, .contact-row span { font-size: 15px; color: var(--text-dark); }
+  .contact-row .label { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 2px; }
+
+  .contact-form {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 34px;
+    color: var(--white);
+  }
+  .contact-form h3 { font-size: 20px; margin-bottom: 8px; }
+  .contact-form p { color: #b9c5d3; font-size: 14px; margin-bottom: 20px; }
+  .contact-form label { font-size: 13px; color: #cfd9e4; display: block; margin-bottom: 6px; }
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.06);
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 16px;
+    font-family: inherit;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: #8a99a8; }
+  .contact-form button {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 13px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .contact-form button:hover { background: var(--gold-light); }
+  .form-note { font-size: 12px; color: #8a99a8; margin-top: 10px; }
+
+  footer {
+    background: var(--navy);
+    color: #8a99a8;
+    text-align: center;
+    padding: 26px 0;
+    font-size: 13.5px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  footer a { color: var(--gold-light); }
+
+  @media (max-width: 860px) {
+    nav ul { display: none; }
+    .hero .wrap, .about .wrap, .contact-grid { grid-template-columns: 1fr; }
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Smart Financial Planning <span>Inc.</span></div>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get a Free Quote</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Protecting what matters most, <em>one family at a time.</em></h1>
+      <p>Easy-to-understand life and property insurance — Term Life, IUL, Annuities, and Final Expense coverage — built around your family's real needs, not confusing fine print.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-primary">Get Your Free Quote</a>
+        <a href="tel:+17132316442" class="btn btn-secondary">Call (713) 231-6442</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Coverage we help with</h3>
+      <ul>
+        <li>Term Life Insurance</li>
+        <li>Indexed Universal Life (IUL)</li>
+        <li>Annuities</li>
+        <li>Final Expense Coverage</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2 class="section-title">How we can help</h2>
+    <p class="section-sub">Straightforward coverage options, explained in plain English — no jargon, no pressure.</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon">&#9673;</div>
+        <h4>Term Life</h4>
+        <p>Affordable protection for a set period — ideal for covering a mortgage, income replacement, or your kids' years at home.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9673;</div>
+        <h4>IUL</h4>
+        <p>Indexed universal life combines lifelong coverage with the potential to build cash value over time.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9673;</div>
+        <h4>Annuities</h4>
+        <p>Turn savings into a reliable stream of income so you can plan retirement with more confidence.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">&#9673;</div>
+        <h4>Final Expense</h4>
+        <p>Smaller, simplified policies designed to cover end-of-life costs so your family isn't left with the bill.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <img class="about-photo" src="headshot.jpg" alt="Raj Otwani, Smart Financial Planning Inc.">
+    <div>
+      <h2>A guide, not just a salesperson</h2>
+      <p>Smart Financial Planning Inc. was built on a simple idea: insurance shouldn't be confusing. Whether you're a young family thinking about your first policy or planning ahead for retirement income, the goal is the same — clear options, honest recommendations, and coverage that actually fits your life.</p>
+      <p>Every conversation starts with listening. From there, we walk through the options that make sense for your situation, with no pressure to buy more than you need.</p>
+      <div class="about-badges">
+        <span class="badge">Licensed Insurance Agent</span>
+        <span class="badge">Family-Focused</span>
+        <span class="badge">Free Consultations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <h2 class="section-title">Why families choose us</h2>
+    <p class="section-sub">A few things that make working with us different.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <h4>Plain-English guidance</h4>
+        <p>No confusing insurance jargon — just clear explanations so you know exactly what you're getting.</p>
+      </div>
+      <div class="why-item">
+        <h4>Options, not pressure</h4>
+        <p>We'll walk you through what's available and let you decide what's right for your family and budget.</p>
+      </div>
+      <div class="why-item">
+        <h4>Here when it matters</h4>
+        <p>Questions after you're covered? We're a call, text, or message away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="section-title">Let's talk about your coverage</h2>
+    <p class="section-sub">Reach out for a free, no-obligation quote — or send a message and we'll get back to you.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact details</h3>
+        <div class="contact-row">
+          <div class="ic">&#9742;</div>
+          <div>
+            <span class="label">Phone</span>
+            <a href="tel:+17132316442">(713) 231-6442</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">&#9993;</div>
+          <div>
+            <span class="label">Email</span>
+            <a href="mailto:raj.otwani@gmail.com">raj.otwani@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">&#128337;</div>
+          <div>
+            <span class="label">Hours</span>
+            <span>Mon–Sat, 9am–10pm CST</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic">f</div>
+          <div>
+            <span class="label">Facebook</span>
+            <a href="https://www.facebook.com/profile.php?id=61590382359179" target="_blank" rel="noopener">Smart Financial Planning Inc.</a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); window.location.href='mailto:raj.otwani@gmail.com?subject=Quote%20Request%20from%20Website&body=' + encodeURIComponent('Name: ' + this.name.value + '\nPhone: ' + this.phone.value + '\nMessage: ' + this.message.value);">
+        <h3>Request a free quote</h3>
+        <p>Fill this out and it'll open an email to send directly.</p>
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Your full name" required>
+        <label>Phone</label>
+        <input type="tel" name="phone" placeholder="Best number to reach you">
+        <label>What are you looking for?</label>
+        <textarea name="message" rows="3" placeholder="e.g. Term life quote for a young family"></textarea>
+        <button type="submit">Send Request</button>
+        <p class="form-note">This opens your email client — no data is stored on this page.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Smart Financial Planning Inc. · <a href="tel:+17132316442">(713) 231-6442</a> · <a href="mailto:raj.otwani@gmail.com">raj.otwani@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
