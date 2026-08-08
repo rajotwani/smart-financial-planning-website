@@ -70,26 +70,43 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" id="quoteForm">
-        <h3>Request a free quote</h3>
-        <p>Fill this out and we'll get back to you shortly.</p>
-        <input type="hidden" name="_subject" value="Quote Request from Website">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Your full name" required>
-        <label>Phone</label>
-        <input type="tel" name="phone" placeholder="Best number to reach you">
-        <label>What are you interested in?</label>
-        <input type="text" name="interest" placeholder="e.g. Term life for a young family">
-        <label>Message</label>
-        <textarea name="message" rows="3" placeholder="Anything else we should know?"></textarea>
-        <button type="submit">Send Request</button>
+      <div class="contact-form-card">
+        <form class="contact-form" id="quoteForm">
+          <h3>Request a free quote</h3>
+          <p>Fill this out and we'll get back to you shortly.</p>
+          <input type="hidden" name="_subject" value="Quote Request from Website">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <label>Name <span class="required">*</span></label>
+          <input type="text" name="name" placeholder="Your full name" required>
+          <label>Phone</label>
+          <input type="tel" name="phone" id="phoneInput" placeholder="713-231-6442" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Format: 713-231-6442" maxlength="12" inputmode="numeric">
+          <label>What are you interested in?</label>
+          <input type="text" name="interest" placeholder="e.g. Term life for a young family">
+          <label>Message</label>
+          <textarea name="message" rows="3" placeholder="Anything else we should know?"></textarea>
+          <p class="form-required-note"><span class="required">*</span> Required field</p>
+          <button type="submit">Send Request</button>
+        </form>
         <p class="form-note" id="formNote">We typically respond within one business day.</p>
-      </form>
+      </div>
       <script>
         (function () {
           var form = document.getElementById('quoteForm');
           var note = document.getElementById('formNote');
+          var phoneInput = document.getElementById('phoneInput');
+          var defaultNote = note.textContent;
+
+          phoneInput.addEventListener('input', function () {
+            var digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+            var formatted = digits;
+            if (digits.length > 6) {
+              formatted = digits.slice(0, 3) + '-' + digits.slice(3, 6) + '-' + digits.slice(6);
+            } else if (digits.length > 3) {
+              formatted = digits.slice(0, 3) + '-' + digits.slice(3);
+            }
+            phoneInput.value = formatted;
+          });
+
           form.addEventListener('submit', function (e) {
             e.preventDefault();
             var btn = form.querySelector('button[type="submit"]');
@@ -105,8 +122,8 @@
               .then(function () {
                 form.reset();
                 form.style.display = 'none';
-                note.textContent = "Thanks! Your request has been sent — we'll be in touch shortly.";
-                note.style.display = 'block';
+                note.textContent = "Thanks! Your request has been sent — we'll be in touch shortly to schedule your complimentary consultation.";
+                note.classList.add('form-note-success');
               })
               .catch(function () {
                 btn.disabled = false;
