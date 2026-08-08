@@ -70,9 +70,11 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault(); window.location.href='mailto:raj.otwani@gmail.com?subject=Quote%20Request%20from%20Website&body=' + encodeURIComponent('Name: ' + this.name.value + '\nPhone: ' + this.phone.value + '\nInterested in: ' + this.interest.value + '\nMessage: ' + this.message.value);">
+      <form class="contact-form" id="quoteForm">
         <h3>Request a free quote</h3>
-        <p>Fill this out and it'll open an email to send directly.</p>
+        <p>Fill this out and we'll get back to you shortly.</p>
+        <input type="hidden" name="_subject" value="Quote Request from Website">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <label>Name</label>
         <input type="text" name="name" placeholder="Your full name" required>
         <label>Phone</label>
@@ -82,8 +84,38 @@
         <label>Message</label>
         <textarea name="message" rows="3" placeholder="Anything else we should know?"></textarea>
         <button type="submit">Send Request</button>
-        <p class="form-note">This opens your email client — no data is stored on this page.</p>
+        <p class="form-note" id="formNote">We typically respond within one business day.</p>
       </form>
+      <script>
+        (function () {
+          var form = document.getElementById('quoteForm');
+          var note = document.getElementById('formNote');
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            note.textContent = '';
+            fetch('https://formsubmit.co/ajax/raj.otwani@gmail.com', {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: new FormData(form)
+            })
+              .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+              .then(function () {
+                form.reset();
+                form.style.display = 'none';
+                note.textContent = "Thanks! Your request has been sent — we'll be in touch shortly.";
+                note.style.display = 'block';
+              })
+              .catch(function () {
+                btn.disabled = false;
+                btn.textContent = 'Send Request';
+                note.textContent = 'Something went wrong sending your request. Please call (713) 231-6442 or email raj.otwani@gmail.com directly.';
+              });
+          });
+        })();
+      </script>
     </div>
   </div>
 </section>
