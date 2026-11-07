@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /life-quote-thankyou.html
+Disallow: /retirement-readiness-thankyou.html
+
+Sitemap: https://www.smarterfinancialplan.com/sitemap.xml
