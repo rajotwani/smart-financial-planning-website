@@ -10,7 +10,7 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
 - **Products featured:** Term Life, IUL, Annuities (MYGA, FIA, SPIA, DIA, QLAC, income riders), Final Expense.
   Also licensed for home/auto/business (P&C) — not yet described on the site.
 - **Phone:** (713) 231-6442 · **Hours:** Mon–Sat, 9am–10pm CST
-- **Email:** raj.otwani@gmail.com on the site today. Cloudflare Email Routing is live: a catch-all forwards
+- **Email:** contact@smarterfinancialplan.com (shown on every page). Cloudflare Email Routing is live: a catch-all forwards
   any address @smarterfinancialplan.com (e.g. raj@, contact@) to raj.otwani@gmail.com.
 - **Facebook:** https://www.facebook.com/profile.php?id=61590382359179
 - **Instant quote tool (main lead source):** https://app.back9ins.com/apply/SmartFinancialPlan (BackNine)
@@ -74,8 +74,7 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
 5. Show Raj what changed, then ask before pushing to `main` (pushing = live).
 
 ## Open items (Nov 2026)
-- Finish business email: Gmail "Send mail as" for the domain address, SPF to include Google, then replace
-  raj.otwani@gmail.com on every page (FormSubmit can keep delivering to Gmail).
+- Finish Gmail "Send mail as" for contact@smarterfinancialplan.com (SPF already includes Google; DMARC is p=none).
 - Decide: add a home/auto/business insurance section, or drop "property" from titles/footers.
 - Add New York license to the footer if/when active.
 - Verify 404.html returns a real 404 after the next deploy.
