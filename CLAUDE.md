@@ -10,7 +10,8 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
 - **Products featured:** Term Life, IUL, Annuities (MYGA, FIA, SPIA, DIA, QLAC, income riders), Final Expense.
   Also licensed for home/auto/business (P&C) — not yet described on the site.
 - **Phone:** (713) 231-6442 · **Hours:** Mon–Sat, 9am–10pm CST
-- **Email:** raj.otwani@gmail.com (to be replaced by a business address on the domain — see "Open items")
+- **Email:** raj.otwani@gmail.com on the site today. Cloudflare Email Routing is live: a catch-all forwards
+  any address @smarterfinancialplan.com (e.g. raj@, contact@) to raj.otwani@gmail.com.
 - **Facebook:** https://www.facebook.com/profile.php?id=61590382359179
 - **Instant quote tool (main lead source):** https://app.back9ins.com/apply/SmartFinancialPlan (BackNine)
 
@@ -26,11 +27,15 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
 
 ## How the site is built
 - Plain static HTML + one shared stylesheet. No framework, no build step.
-- **Hosting:** GitHub Pages from `main` of https://github.com/rajotwani/smart-financial-planning-website
-  (`CNAME` = www.smarterfinancialplan.com). Cloudflare sits in front (proxy/DNS).
+- **Hosting:** Cloudflare Pages project `smarterfinancialplan`, auto-deployed from `main` of
+  https://github.com/rajotwani/smart-financial-planning-website. Domains: smarterfinancialplan.com,
+  www.smarterfinancialplan.com, smarterfinancialplan.pages.dev. DNS is also on Cloudflare
+  (account "Raj.otwani@gmail.com's Account"). The `CNAME` file is a leftover from GitHub Pages and is unused.
+  (A second, unused Pages project `smartfinplan` also exists.)
 - **Live URL:** https://www.smarterfinancialplan.com — note: NOT smartfinancialplan.com or smarterfinancialplanning.com (those belong to others).
-- **Deploying:** commit and push to `main`; GitHub Pages republishes in about a minute. Cloudflare may cache —
-  hard-refresh or purge cache if a change doesn't show.
+- **Deploying:** commit and push to `main` (Raj pushes with GitHub Desktop); Cloudflare Pages builds and
+  publishes in about a minute. Check the deployment in Cloudflare > Workers & Pages > smarterfinancialplan.
+  Without a 404.html, Pages serves index.html for unknown URLs — keep 404.html in the repo.
 - **Local preview:** `python -m http.server 8080` in this folder (see `.claude/launch.json`).
 
 ### Files
@@ -69,8 +74,8 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
 5. Show Raj what changed, then ask before pushing to `main` (pushing = live).
 
 ## Open items (Nov 2026)
-- Business email on smarterfinancialplan.com — once live, replace raj.otwani@gmail.com in every page and
-  re-point the FormSubmit key to the new address.
+- Finish business email: Gmail "Send mail as" for the domain address, SPF to include Google, then replace
+  raj.otwani@gmail.com on every page (FormSubmit can keep delivering to Gmail).
 - Decide: add a home/auto/business insurance section, or drop "property" from titles/footers.
 - Add New York license to the footer if/when active.
-- Unknown URLs used to fall back to the home page with status 200; 404.html should fix this — verify after deploy.
+- Verify 404.html returns a real 404 after the next deploy.
