@@ -62,6 +62,8 @@ Instructions for Claude when maintaining this site. Read this first; don't ask R
   below 560px the header quote button moves into the dropdown.
 - New page checklist: copy an existing page's header/footer, set `<title>` and meta description,
   add `<link rel="icon">` and `<script src="menu.js">`, add it to `sitemap.xml` (and the nav if it's a main page).
+- **Cache-busting:** browsers cache styles.css and menu.js for ~4 hours. Whenever you change either file,
+  bump the `?v=YYYYMMDD` on its `<link>`/`<script>` tag in **every** page, or visitors get old styles.
 - Forms post via JavaScript to FormSubmit: `https://formsubmit.co/ajax/ea917fa2f663a855d8cccf80db20ca9c`
   (used in contact.html, life-quote.html, retirement-readiness.html). The key maps to Raj's inbox.
   **Never submit a live form to test without asking Raj** — it sends him a real email.
